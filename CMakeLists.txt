@@ -85,6 +85,8 @@ set(QSLIBSNX_SOURCES
 		src/bindings/bindings_config.h
 		src/bindings/default/default_callbacks.c
 		src/bindings/default/default_control.c
+		src/bindings/default/default_coding.c
+		src/bindings/default/default_files.c
 		src/bindings/default/qsp_default.h
 		src/bindings/jvm/jvm_callbacks.c
 		src/bindings/jvm/jvm_control.c

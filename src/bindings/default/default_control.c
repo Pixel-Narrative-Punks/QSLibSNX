@@ -369,11 +369,26 @@ const QSP_CHAR *QSPGetErrorDesc(int errorNum)
 /* Загрузка новой игры из файла */
 QSP_BOOL QSPLoadGameWorld(const QSP_CHAR *fileName)
 {
+	if (fileName == NULL) return QSP_FALSE;
+
 	if (qspIsExitOnError && qspErrorNum) return QSP_FALSE;
 	qspResetError();
+
 	if (qspIsDisableCodeExec) return QSP_FALSE;
-	qspOpenQuest((QSP_CHAR *)fileName, QSP_FALSE);
+
+	FILE *f = QSP_FOPEN(fileName, QSP_FMT("rb"));
+	if (f == NULL)
+	{
+		qspSetError(QSP_ERR_FILENOTFOUND);
+		return QSP_FALSE;
+	}
+
+	qspOpenQuestFromFILE(f, fileName, QSP_FALSE);
+
+	fclose(f);
+
 	if (qspErrorNum) return QSP_FALSE;
+
 	return QSP_TRUE;
 }
 /* Загрузка новой игры из памяти */
@@ -394,12 +409,28 @@ QSP_BOOL QSPLoadGameWorldFromData(const void *data, int dataSize, const QSP_CHAR
 /* Сохранение состояния в файл */
 QSP_BOOL QSPSaveGame(const QSP_CHAR *fileName, QSP_BOOL isRefresh)
 {
+	if (fileName == NULL) return QSP_FALSE;
+
 	if (qspIsExitOnError && qspErrorNum) return QSP_FALSE;
 	qspPrepareExecution();
+
 	if (qspIsDisableCodeExec) return QSP_FALSE;
-	qspSaveGameStatus((QSP_CHAR *)fileName);
+
+	FILE *f = QSP_FOPEN(fileName, QSP_FMT("rb"));
+	if (f == NULL)
+	{
+		qspSetError(QSP_ERR_FILENOTFOUND);
+		return QSP_FALSE;
+	}
+
+	qspSaveGameStatusToFILE(f);
+
+	fclose(f);
+
 	if (qspErrorNum) return QSP_FALSE;
+
 	if (isRefresh) qspCallRefreshInt(QSP_FALSE);
+
 	return QSP_TRUE;
 }
 /* Сохранение состояния в память */
@@ -442,12 +473,28 @@ QSP_BOOL QSPSaveGameAsData(void **buf, int *realSize, QSP_BOOL isRefresh)
 /* Загрузка состояния из файла */
 QSP_BOOL QSPOpenSavedGame(const QSP_CHAR *fileName, QSP_BOOL isRefresh)
 {
+	if (fileName == NULL) return QSP_FALSE;
+
 	if (qspIsExitOnError && qspErrorNum) return QSP_FALSE;
 	qspPrepareExecution();
+
 	if (qspIsDisableCodeExec) return QSP_FALSE;
-	qspOpenGameStatus((QSP_CHAR *)fileName);
+
+	FILE *f = QSP_FOPEN(fileName, QSP_FMT("rb"));
+	if (f == NULL)
+	{
+		qspSetError(QSP_ERR_FILENOTFOUND);
+		return QSP_FALSE;
+	}
+
+	qspOpenGameStatusFromFILE(f);
+
+	fclose(f);
+
 	if (qspErrorNum) return QSP_FALSE;
+
 	if (isRefresh) qspCallRefreshInt(QSP_FALSE);
+
 	return QSP_TRUE;
 }
 /* Загрузка состояния из памяти */

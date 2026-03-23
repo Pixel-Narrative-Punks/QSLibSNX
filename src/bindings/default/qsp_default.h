@@ -96,7 +96,11 @@
 	{
 	#endif
 
-	char16_t* c16sncpy( char16_t* dest, const char16_t* src, size_t count );
+	char16_t* c16sncpy(char16_t* dest, const char16_t* src, size_t count);
+
+	void qspOpenQuestFromFILE(FILE *, const QSP_CHAR *, QSP_BOOL);
+	void qspSaveGameStatusToFILE(FILE *);
+	void qspOpenGameStatusFromFILE(FILE *);
 
 	QSLIBSNX_EXTERN QSP_BOOL QSPIsInCallBack();
 	QSLIBSNX_EXTERN void QSPEnableDebugMode(QSP_BOOL isDebug);
