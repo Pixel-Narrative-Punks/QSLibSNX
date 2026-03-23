@@ -91,4 +91,8 @@
 	jstring snxToJavaString(JNIEnv *env, QSP_CHAR *str);
 	QSP_CHAR *snxFromJavaString(JNIEnv *env, jstring str);
 
+	void qspOpenQuestFromFILE(FILE *, QSP_CHAR *, QSP_BOOL);
+	void qspSaveGameStatusToFILE(FILE *);
+	void qspOpenGameStatusFromFILE(FILE *);
+
 #endif

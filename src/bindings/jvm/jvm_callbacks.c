@@ -143,6 +143,22 @@ void qspCallSystem(QSP_CHAR* cmd)
 	}
 }
 
+void qspCallOpenQuest(QSP_CHAR* fileName, QSP_BOOL isAddLocs)
+{
+	if (fileName == NULL) return;
+
+	if (qspCallBacks[QSP_CALL_OPENGAME]) {
+		QSPCallState state;
+		JNIEnv *javaEnv = snxGetJniEnv();
+		jstring jniFile = snxToJavaString(javaEnv, fileName);
+
+		qspSaveCallState(&state, QSP_FALSE, QSP_FALSE);
+		(*javaEnv)->CallVoidMethod(javaEnv, snxApiObject, qspCallBacks[QSP_CALL_OPENGAME], jniFile, isAddLocs);
+		(*javaEnv)->DeleteLocalRef(javaEnv, jniFile);
+		qspRestoreCallState(&state);
+	}
+}
+
 void qspCallOpenGame(QSP_CHAR* file)
 {
 	if (file == NULL) return;

@@ -89,6 +89,7 @@ set(QSLIBSNX_SOURCES
 		src/bindings/jvm/jvm_callbacks.c
 		src/bindings/jvm/jvm_control.c
 		src/bindings/jvm/jvm_coding.c
+		src/bindings/jvm/jvm_files.c
 		src/bindings/jvm/qsp_jvm.h
 		src/declarations.h
 		src/bindings/qsp.h
