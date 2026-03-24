@@ -67,13 +67,19 @@ public abstract class QSLibSNX {
     public native String getErrorDesc(int errorNum);
 
     // --- Game ---
-    public native boolean loadGameWorldFromData(byte[] data, String fileName);
-    public native boolean loadGameWorldFromFD(int fileDescriptor, String fileName);
+    public native boolean restartGame(boolean isRefresh);
+
+    public native boolean loadGameWorldFromData(byte[] data, String fileName, boolean isRefresh);
+    public native boolean loadGameWorldFromFD(int fileDescriptor, String fileName, boolean isRefresh);
+    public native boolean loadGameWorldFromPath(String filePath, String fileName, boolean isRefresh);
+
     public native byte[] saveGameAsData(boolean isRefresh);
     public native boolean saveGameByFD(int fileDescriptor, boolean isRefresh);
+    public native boolean saveGameByPath(String filePath, boolean isRefresh);
+
     public native boolean openSavedGameFromData(byte[] data, boolean isRefresh);
     public native boolean openSavedGameFromFD(int fileDescriptor, boolean isRefresh);
-    public native boolean restartGame(boolean isRefresh);
+    public native boolean openSavedGameFromPath(String filePath, boolean isRefresh);
 
     // --- Menu ---
     public native void selectMenuItem(int index);

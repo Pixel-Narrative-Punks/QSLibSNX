@@ -150,7 +150,7 @@ JNIEXPORT jint JNICALL Java_com_libsnxqs_jni_QSLibSNX_getMaxVarsCount
  * Signature: ()Ljava/lang/Object;
  */
 JNIEXPORT jobject JNICALL Java_com_libsnxqs_jni_QSLibSNX_getVarNameByIndex
-  (JNIEnv *, jobject, jint);
+  (JNIEnv *, jobject);
 
 /*
  * Class:     com_libsnxqs_jni_QSLibSNX
@@ -282,19 +282,35 @@ JNIEXPORT jstring JNICALL Java_com_libsnxqs_jni_QSLibSNX_getErrorDesc
 
 /*
  * Class:     com_libsnxqs_jni_QSLibSNX
+ * Method:    restartGame
+ * Signature: (Z)Z
+ */
+JNIEXPORT jboolean JNICALL Java_com_libsnxqs_jni_QSLibSNX_restartGame
+  (JNIEnv *, jobject, jboolean);
+
+/*
+ * Class:     com_libsnxqs_jni_QSLibSNX
  * Method:    loadGameWorldFromData
- * Signature: ([BLjava/lang/String;)Z
+ * Signature: ([BLjava/lang/String;Z)Z
  */
 JNIEXPORT jboolean JNICALL Java_com_libsnxqs_jni_QSLibSNX_loadGameWorldFromData
-  (JNIEnv *, jobject, jbyteArray, jstring);
+  (JNIEnv *, jobject, jbyteArray, jstring, jboolean);
 
 /*
  * Class:     com_libsnxqs_jni_QSLibSNX
  * Method:    loadGameWorldFromFD
- * Signature: (ILjava/lang/String;)Z
+ * Signature: (ILjava/lang/String;Z)Z
  */
 JNIEXPORT jboolean JNICALL Java_com_libsnxqs_jni_QSLibSNX_loadGameWorldFromFD
-  (JNIEnv *, jobject, jint, jstring);
+  (JNIEnv *, jobject, jint, jstring, jboolean);
+
+/*
+ * Class:     com_libsnxqs_jni_QSLibSNX
+ * Method:    loadGameWorldFromPath
+ * Signature: (Ljava/lang/String;Ljava/lang/String;Z)Z
+ */
+JNIEXPORT jboolean JNICALL Java_com_libsnxqs_jni_QSLibSNX_loadGameWorldFromPath
+  (JNIEnv *, jobject, jstring, jstring, jboolean);
 
 /*
  * Class:     com_libsnxqs_jni_QSLibSNX
@@ -314,6 +330,14 @@ JNIEXPORT jboolean JNICALL Java_com_libsnxqs_jni_QSLibSNX_saveGameByFD
 
 /*
  * Class:     com_libsnxqs_jni_QSLibSNX
+ * Method:    saveGameByPath
+ * Signature: (Ljava/lang/String;Z)Z
+ */
+JNIEXPORT jboolean JNICALL Java_com_libsnxqs_jni_QSLibSNX_saveGameByPath
+  (JNIEnv *, jobject, jstring, jboolean);
+
+/*
+ * Class:     com_libsnxqs_jni_QSLibSNX
  * Method:    openSavedGameFromData
  * Signature: ([BZ)Z
  */
@@ -330,11 +354,11 @@ JNIEXPORT jboolean JNICALL Java_com_libsnxqs_jni_QSLibSNX_openSavedGameFromFD
 
 /*
  * Class:     com_libsnxqs_jni_QSLibSNX
- * Method:    restartGame
- * Signature: (Z)Z
+ * Method:    openSavedGameFromPath
+ * Signature: (Ljava/lang/String;Z)Z
  */
-JNIEXPORT jboolean JNICALL Java_com_libsnxqs_jni_QSLibSNX_restartGame
-  (JNIEnv *, jobject, jboolean);
+JNIEXPORT jboolean JNICALL Java_com_libsnxqs_jni_QSLibSNX_openSavedGameFromPath
+  (JNIEnv *, jobject, jstring, jboolean);
 
 /*
  * Class:     com_libsnxqs_jni_QSLibSNX
