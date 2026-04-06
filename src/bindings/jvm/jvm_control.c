@@ -643,7 +643,7 @@ JNIEXPORT jboolean JNICALL Java_com_libsnxqs_jni_QSLibSNX_openSavedGameFromFD(JN
 /* Working with file */
 
 /* Loading a new game from file */
-JNIEXPORT jboolean JNICALL Java_com_libsdhqs_jni_QSLibSNX_loadGameWorldFromPath(JNIEnv *env, jobject this, jstring filePath, jstring fileName, jboolean isAddLocs)
+JNIEXPORT jboolean JNICALL Java_com_libsnxqs_jni_QSLibSNX_loadGameWorldFromPath(JNIEnv *env, jobject this, jstring filePath, jstring fileName, jboolean isAddLocs)
 {
 	if (filePath == NULL) return QSP_FALSE;
 
@@ -676,7 +676,7 @@ JNIEXPORT jboolean JNICALL Java_com_libsdhqs_jni_QSLibSNX_loadGameWorldFromPath(
 }
 
 /* Saving state to file */
-JNIEXPORT jboolean JNICALL Java_com_libsdhqs_jni_QSLibSNX_saveGameByPath(JNIEnv *env, jobject this, jstring filePath, jboolean isRefresh)
+JNIEXPORT jboolean JNICALL Java_com_libsnxqs_jni_QSLibSNX_saveGameByPath(JNIEnv *env, jobject this, jstring filePath, jboolean isRefresh)
 {
 	if (filePath == NULL) return QSP_FALSE;
 
@@ -707,7 +707,7 @@ JNIEXPORT jboolean JNICALL Java_com_libsdhqs_jni_QSLibSNX_saveGameByPath(JNIEnv 
 }
 
 /* Loading state from file */
-JNIEXPORT jboolean JNICALL Java_com_libsdhqs_jni_QSLibSNX_openSavedGameFromPath(JNIEnv *env, jobject this, jstring filePath, jboolean isRefresh)
+JNIEXPORT jboolean JNICALL Java_com_libsnxqs_jni_QSLibSNX_openSavedGameFromPath(JNIEnv *env, jobject this, jstring filePath, jboolean isRefresh)
 {
 	if (filePath == NULL) return QSP_FALSE;
 
@@ -742,7 +742,7 @@ JNIEXPORT jboolean JNICALL Java_com_libsdhqs_jni_QSLibSNX_openSavedGameFromPath(
 /* Working with memory */
 
 /* Loading a new game from memory */
-JNIEXPORT jboolean JNICALL Java_com_libsdhqs_jni_QSLibSNX_loadGameWorldFromData(JNIEnv *env, jobject this, jbyteArray data, jstring fileName, jboolean isAddLocs)
+JNIEXPORT jboolean JNICALL Java_com_libsnxqs_jni_QSLibSNX_loadGameWorldFromData(JNIEnv *env, jobject this, jbyteArray data, jstring fileName, jboolean isAddLocs)
 {
 	if (data == NULL || fileName == NULL) return QSP_FALSE;
 
@@ -774,7 +774,7 @@ JNIEXPORT jboolean JNICALL Java_com_libsdhqs_jni_QSLibSNX_loadGameWorldFromData(
 }
 
 /* Saving state to memory */
-JNIEXPORT jbyteArray JNICALL Java_com_libsdhqs_jni_QSLibSNX_saveGameAsData(JNIEnv *env, jobject this, jboolean isRefresh)
+JNIEXPORT jbyteArray JNICALL Java_com_libsnxqs_jni_QSLibSNX_saveGameAsData(JNIEnv *env, jobject this, jboolean isRefresh)
 {
 	if (qspIsExitOnError && qspErrorNum) return NULL;
 	qspPrepareExecution();
@@ -801,7 +801,7 @@ JNIEXPORT jbyteArray JNICALL Java_com_libsdhqs_jni_QSLibSNX_saveGameAsData(JNIEn
 }
 
 /* Loading state from memory */
-JNIEXPORT jboolean JNICALL Java_com_libsdhqs_jni_QSLibSNX_openSavedGameFromData(JNIEnv *env, jobject this, jbyteArray data, jboolean isRefresh)
+JNIEXPORT jboolean JNICALL Java_com_libsnxqs_jni_QSLibSNX_openSavedGameFromData(JNIEnv *env, jobject this, jbyteArray data, jboolean isRefresh)
 {
 	if (data == NULL) return QSP_FALSE;
 
